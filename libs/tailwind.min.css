@@ -1,0 +1,34 @@
+
+/*! tailwindcss v3.0.0 | MIT License */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sample precompiled styles */
+body {
+  font-family: 'Inter', sans-serif;
+}
+.text-center {
+  text-align: center;
+}
+.bg-pink-500 {
+  background-color: #ec4899;
+}
+.text-white {
+  color: #ffffff;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.rounded {
+  border-radius: 0.25rem;
+}
+.shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+/* This is just a small sample, not the full file */

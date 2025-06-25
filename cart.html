@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+  <title>Cart | Black Culture</title>
+
+  
+  <link rel="stylesheet" href="libs/bootstrap.min.css" />
+  <link rel="stylesheet" href="libs/aos.css" />
+
+</head>
+
+<body class="bg-light-400">
+
+  
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark px-4 py-3">
+    <div class="container">
+
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+
+    <img src="LOGO.jpg" alt="Logo" height="35" class="me-2" />
+    <span class="fw-bold text-uppercase">Black Culture</span>
+
+        </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse justify-content-end mt-3 mt-md-0" id="navbarNav">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link active" href="cart.html">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+  <section class="text-center py-5 bg-white">
+
+    <div class="container">
+
+      <h1 class="display-6 fw-bold">Your Cart</h1>
+      <p class="text-muted">Review your selected items</p>
+
+    </div>
+  </section>
+
+  
+  <section class="py-5">
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center bg-white">
+
+          <thead class="table-dark">
+
+            <tr>
+              <th>Product</th>
+              <th>Price (₦)</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="cart-items">
+
+          </tbody>
+
+
+          <tfoot class="bg-light fw-bold">
+
+            <tr>
+              <td>Total</td>
+              <td id="cart-total">₦0</td>
+            </tr>
+
+          </tfoot>
+
+        </table>
+      </div>
+
+
+      <div class="text-center mt-4">
+        <button id="clear-cart" class="btn btn-danger btn-sm rounded-pill">Clear Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center mt-3">
+  <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+    Proceed to Checkout
+  </button>
+</div>
+  
+
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="checkoutModalLabel">Checkout Summary</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <ul id="checkout-items" class="list-group mb-3"></ul>
+        <p class="fw-bold">Total: <span id="checkout-total">₦0</span></p>
+
+        <div class="form-group mb-2">
+          <label for="custName">Name</label>
+          <input type="text" id="custName" class="form-control" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="custPhone">Phone</label>
+          <input type="text" id="custPhone" class="form-control" placeholder="Your WhatsApp number" required>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a id="whatsapp-order" class="btn btn-success w-100" target="_blank">Send Order via WhatsApp</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <footer class="bg-dark text-white text-center py-3 small">
+    &copy; 2025 Black Culture. All rights reserved.
+  </footer>
+
+  
+  <script src="libs/bootstrap.bundle.min.js"></script>
+  <script src="libs/aos.js"></script>
+
+  <script>
+  AOS.init();
+
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartItems = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+  let total = 0;
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<tr><td colspan="2" class="text-muted">Cart is empty</td></tr>';
+  } else {
+    cart.forEach(item => {
+      const price = parseFloat(item.price); 
+      total += price;
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${item.name}</td><td>₦${price.toLocaleString()}</td>`;
+      cartItems.appendChild(row);
+    });
+  }
+
+  cartTotal.textContent = `₦${total.toLocaleString()}`;
+
+  document.getElementById("clear-cart").addEventListener("click", () => {
+    localStorage.removeItem("cart");
+    location.reload();
+  });
+</script>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCount = document.getElementById("cart-count");
+  if (cartCount) {
+    cartCount.textContent = cart.length;
+  }
+</script>
+
+  
+<script>
+  const checkoutItems = document.getElementById("checkout-items");
+  const checkoutTotal = document.getElementById("checkout-total");
+  const whatsappBtn = document.getElementById("whatsapp-order");
+
+  document.getElementById("checkoutModal").addEventListener("show.bs.modal", () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let modalTotal = 0;
+    let cartText = "";
+
+    checkoutItems.innerHTML = "";
+
+    cart.forEach(item => {
+      const price = parseFloat(item.price);
+      if (!isNaN(price)) {
+        modalTotal += price;
+
+        const li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
+        li.innerHTML = `${item.name} <span>₦${price.toLocaleString()}</span>`;
+        checkoutItems.appendChild(li);
+
+        cartText += `🛍 ${item.name} - ₦${price.toLocaleString()}\n`;
+      }
+    });
+
+    checkoutTotal.textContent = `₦${modalTotal.toLocaleString()}`;
+
+    whatsappBtn.onclick = () => {
+      const name = document.getElementById("custName").value.trim();
+      const phone = document.getElementById("custPhone").value.trim();
+
+      if (!name || !phone) {
+        alert("Please fill in your name and phone number.");
+        return;
+      }
+
+      const message = `Hello, I want to place an order:\n\n${cartText}\n🧾 Total: ₦${modalTotal.toLocaleString()}\n\n👤 Name: ${name}\n📱 Phone: ${phone}`;
+      const encoded = encodeURIComponent(message);
+      whatsappBtn.href = `https://wa.me/2348067500723?text=${encoded}`;
+    };
+  });
+</script>
+
+</body>
+</html>

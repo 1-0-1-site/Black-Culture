@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="title" content="Black Culture – Premium Fashion Store for Men and Women" />
+
+<meta name="description" content="Discover the best fashion items at Black Culture. Shop premium shoes, bags, watches, accessories and more — bold style for bold people." />
+
+<meta name="keywords" content="Black Culture, fashion store, premium fashion, men’s wear, ladies wear, shoes, bags, watches, accessories, G-Shock, Crocs, online shop Nigeria" />
+
+<meta name="author" content="Kehinde Paul" />
+
+<meta name="robots" content="index, follow" />
+
+
+
+  <title>Black Culture</title>
+
+  
+  <link rel="stylesheet" href="libs/bootstrap.min.css" />
+  <link rel="stylesheet" href="libs/aos.css" />
+
+
+  <style>
+    .product-img {
+      width: 280px;
+      height: 300px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+  </style>
+
+</head>
+
+<body class="bg-gray-700">
+
+  
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark px-4 py-3">
+
+    <div class="container">
+
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+
+    <img src="LOGO.jpg" alt="Logo" height="35" class="me-2" />
+    <span class="fw-bold text-uppercase">Black Culture</span>
+
+        </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse justify-content-end mt-3 mt-md-0" id="navbarNav">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link active" href="cart.html">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+      <li class="nav-item">
+        <a href="cart.html" class="nav-link">
+          Cart <span id="cart-count" class="badge bg-warning text-dark-100">0</span>
+        </a>
+      </li>
+  
+  <section class="text-center py-5 bg-gray-900">
+    <div class="container">
+      <h1 class="display-5 fw-bold">Welcome to Black Culture</h1>
+      <p class="lead text-muted mb-4"> Giving Affordable Luxury.</p>
+      <a href="shop.html" class="btn btn-pink text-white px-4 py-2 rounded-pill" style="background-color: #EC4899;">
+        Shop Now
+      </a>
+    </div>
+  </section>
+
+  
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4">
+
+        
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="naked wolfe 2.jpg" class="card-img-top img-fluid product-img" alt="Naked Wolfe">
+          <div class="card-body text-center">
+            <h5 class="fw-bold">Naked Wolfe</h5>
+            <p class="text-muted small">Step out in comfort and confidence.</p>
+            <a href="#" class="btn btn-dark btn-sm rounded-pill"
+              data-name="Naked Wolfe" data-price="55000"> </a>
+          </div>
+        </div>
+      </div>
+
+            <a href="shop.html" class="btn btn-outline-pink btn-sm rounded-pill" style="border-color: #EC4899; color: #EC4899;">View Product</a>
+          </div>
+        </div>
+
+        
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="g shock.jpg" class="card-img-top img-fluid product-img" alt="G Shock ">
+          <div class="card-body text-center">
+            <h5 class="fw-bold">G Shock </h5>
+            <p class="text-muted small">Timeless elegance for every wrist.</p>
+            <a href="#" class="btn btn-dark btn-sm rounded-pill"
+              data-name="G Shock" data-price="50000"></a>
+          </div>
+        </div>
+      </div>
+
+            <a href="shop.html" class="btn btn-outline-pink btn-sm rounded-pill" style="border-color: #EC4899; color: #EC4899;">View Product</a>
+          </div>
+        </div>
+
+        
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="dior 2.jpg" class="card-img-top img-fluid product-img" alt="Dior Bag">
+          <div class="card-body text-center">
+            <h5 class="fw-bold">Dior Bag</h5>
+          <p class="text-muted small">Carry elegance with every step.</p>
+            <a href="#" class="btn btn-pink text-pink-500 btn-sm rounded-pill"
+              data-name="Dior Bag" data-price="45000"></a>
+          </div>
+        </div>
+      </div>
+
+          
+
+            <a href="shop.html" class="btn btn-outline-pink btn-sm rounded-pill" style="border-color: #EC4899; color: #EC4899;">View Product</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <footer class="bg-dark text-white text-center py-3 small">
+    &copy; 2025 Black Culture. All rights reserved.
+  </footer>
+
+  
+  <script src="libs/bootstrap.bundle.min.js"></script>
+  <script src="libs/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+
+<script>
+  
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCount = document.getElementById("cart-count");
+  if (cartCount) {
+    cartCount.textContent = cart.length;
+  }
+</script>
+
+</body>
+</html>
