@@ -34,6 +34,26 @@
       height: 400px;
       object-fit: cover;
     }
+
+  #backToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    background-color: #111;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  #backToTopBtn:hover {
+    background-color: #ff1493;
+  }
   </style>
 </head>
 
@@ -258,12 +278,18 @@
   </div>
   </section>
 
+  
+<button onclick="scrollToTop()" id="backToTopBtn" title="Go to top">
+  ⬆
+</button>
+
   <footer class="bg-dark text-white text-center py-3 small">
     &copy; 2025 Black Culture. All rights reserved.
   </footer>
 
   <script src="libs/bootstrap.bundle.min.js"></script>
   <script src="libs/aos.js"></script>
+
   <script>
     AOS.init();
 
@@ -282,5 +308,21 @@
       });
     });
   </script>
+
+  <script>
+  window.onscroll = function () {
+    const btn = document.getElementById("backToTopBtn");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      btn.style.display = "block";
+    } else {
+      btn.style.display = "none";
+    }
+  };
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
 </body>
 </html>
